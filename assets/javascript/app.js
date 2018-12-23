@@ -43,7 +43,7 @@ $("#answer-choice-4").html(answers[3]);
 // STEP ONE: INITIALIZE TIMER.
 
 // Timer will count down from NUMBER.
-var number = 3; 
+var number = 30; 
 $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
 
 // Initialize a variable that will hold value of NUMBER when the count down begins.
@@ -111,7 +111,8 @@ run();
 
 // Create a function to reset the timer
 function resetTimer(){
-    number = 3;
+    number = 30;
+    $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
 
     // Call the RUN, CHANGEQUESTION and CHANGEANSWER functions on delay
     setTimeout(run, 1000 * 3);
@@ -152,25 +153,266 @@ function changeAnswers(){
 
 }
 
+// Initialize a variable to track number of correct answers selected.
+correct = 0;
+
+// Initializa a variable to track number of incorrect answers selected.
+incorrect = 0;
+
 // Create a function to check if the correct or incorrect answer is selected based on which question is displayed.
 function checkCorrectAnswer(){
+    // Conditional for when on first question.
     if (questionIndex === 0){
         console.log("We're on question 1");
+
+        // When the correct answer is selected
+        $("#answer-choice-3").click(function(){
+            alert("Correct!");
+
+            // Increment CORRECT.
+            correct++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-1").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-2").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-4").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
     }
+    // Conditional for second question.
     if (questionIndex === 1){
         console.log("We're on question 2");
+
+        // When the correct answer is selected
+        $("#answer-choice-3").click(function(){
+            alert("Correct!");
+
+            // Increment CORRECT.
+            correct++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-1").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-2").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-4").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
     }
+
+    // Conditional for third question.
     if (questionIndex === 2){
         console.log("We're on question 3");
+
+        // When the correct answer is selected
+        $("#answer-choice-1").click(function(){
+            alert("Correct!");
+
+            // Increment CORRECT.
+            correct++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-2").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-3").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-4").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
     }
+
+    // Conditional for fourth question.
     if (questionIndex === 3){
         console.log("We're on question 4");
+
+        // When the correct answer is selected
+        $("#answer-choice-4").click(function(){
+            alert("Correct!");
+
+            // Increment CORRECT.
+            correct++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-1").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-2").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-3").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
     }
+
+    // Conditional for fifth question.
     if (questionIndex === 4){
         console.log("We're on question 5");
-    }
-    if (questionIndex === 5){
-        console.log("We're on question 6");
+
+        // When the correct answer is selected
+        $("#answer-choice-2").click(function(){
+            alert("Correct!");
+
+            // Increment CORRECT.
+            correct++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-1").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-3").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
+        $("#answer-choice-4").click(function(){
+            alert("Incorrect!");
+
+            // Increment CORRECT.
+            incorrect++;
+
+            // Call the CHANGEQUESTION, CHANGEANSWER and RESETTIMER functions
+            changeQuestion();
+            changeAnswers();
+            resetTimer();
+        })
     }
 }
     
