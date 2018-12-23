@@ -1,94 +1,12 @@
-// STEP ONE: INITIALIZE TIMER.
-
-// Timer will count down from NUMBER.
-var number = 3; 
-$("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
-
-// Initialize a variable that will hold value of NUMBER when the count down begins.
-var intervalId;
-
-// Create a RUN function to begin the count down.
-function run(){
-
-    // The countdown will start at NUMBER and decend by one every 1000ms.
-    intervalId = setInterval(decrement, 1000);
-    $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
-}
-
-// Create a STOP function to stop the count down. The countdown will stop when NUMBER equals 0.
-function stop(){
-
-    // Clear the interval so the count down stops.
-    clearInterval(intervalId);
-}
-
-// Create a function to decrease the value of NUMBER by one.
-function decrement(){
-
-    // Decrease NUMBER by one.
-    number--;
-    $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
-
-    // Check to see if NUMBER equals 0. If so, STOP countdown.
-    checkOutOfTime();
-}
-
-// Initialize a varialbe w/ a boolean value to track when NUMBER equals 0 (when the user is out of time).
-// ISOUTOFTIME will be true when NUMBER equals 0.
-// var isOutOfTime = false;
-
-// Create a function to stop countdown when NUMBER equals 0.
-function checkOutOfTime(){
-
-    // Contidional: When NUMBER equals 0...
-    if (number === 0){
-
-        // ...STOP the countdown.
-        stop()
-
-        $("#time-remaining").html("<h2> Out of Time! </h2>");
-        // isOutOfTime = true;
-
-        // changeQuestion();
-
-        // // Reset NUMBER
-        // number = 3;
-
-        // // Restart countdown.
-        // setTimeout(run, 1000 * 3);
-
-        resetTimer();
-    }
-}
-
-// Execute the RUN function.
-run();
-
-// var temp = checkOutOfTime();
-// if (isOutOfTime = true){
-//     alert("Out of Time!");
-// }
-
-// Create Question
+// Create Array of QUESTIONS.
 var questions =[
     "What is the name of the starship Captain Kirk commands?", 
     "What color is Commander Spock's blood?", 
     "What is Lieutenant Uhura's primary occupation on the USS Enterprise?",
     "In 1987, the phrase '...to boldly go where no man has gone before' was changed to what?",
-    "In the 1965 pilot, who was the Captain of the USS Enterprise?"]
+    "In the 1965 pilot, who was the Captain of the USS Enterprise?"];
 
-$("#question").html("<h3>" + questions[0] + "</h3>");
-
-function resetTimer(){
-    number = 3;
-    setTimeout(run, 1000 * 3);
-    changeQuestion();
-}
-function changeQuestion(){
-    for (i=0; i< questions.length; i++){
-        $("#question").html("<h3>" + questions[i] + "</h3>");
-    }
-}
+// $("#question").html("<h3>" + questions[questionIndex] + "</h3>");
 
 // Create Answer choices
 var answers = [
@@ -98,9 +16,9 @@ var answers = [
     "USS Discovery",
 
     "Blue",
-    "Purple",
     "Red",
     "Green",
+    "Purple",
 
     "Communications officer",
     "Helmsman",
@@ -121,6 +39,141 @@ $("#answer-choice-1").html(answers[0]);
 $("#answer-choice-2").html(answers[1]);
 $("#answer-choice-3").html(answers[2]);
 $("#answer-choice-4").html(answers[3]);
+
+// STEP ONE: INITIALIZE TIMER.
+
+// Timer will count down from NUMBER.
+var number = 3; 
+$("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
+
+// Initialize a variable that will hold value of NUMBER when the count down begins.
+var intervalId;
+
+// Create a variable to keep track of which question is displayed.
+var questionIndex = 0;
+$("#question").html("<h3>" + questions[questionIndex] + "</h3>");
+
+// Create a RUN function to begin the count down.
+function run(){
+    
+    // The countdown will start at NUMBER and decend by one every 1000ms.
+    intervalId = setInterval(decrement, 1000);
+    $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
+
+    // Check if the correct answer is selected.
+    checkCorrectAnswer();
+}
+
+// Create a STOP function to stop the count down. The countdown will stop when NUMBER equals 0.
+function stop(){
+
+    // Clear the interval so the count down stops.
+    clearInterval(intervalId);
+}
+
+// Create a function to decrease the value of NUMBER by one.
+function decrement(){
+
+    // Decrease NUMBER by one.
+    number--;
+    $("#time-remaining").html("<h2> Time Remaining: " + number + "</h2>");
+
+    // Check to see if NUMBER equals 0. If so, STOP countdown.
+    checkOutOfTime();
+}
+
+// Create a function to stop countdown when NUMBER equals 0.
+function checkOutOfTime(){
+
+    // Contidional: When NUMBER equals 0...
+    if (number === 0){
+
+        // ...STOP the countdown.
+        stop()
+
+        $("#time-remaining").html("<h2> Out of Time! </h2>");
+        
+        // Empty the question and ansers
+        $("#question").html("");
+        $("#answer-choice-1").html("");
+        $("#answer-choice-2").html("");
+        $("#answer-choice-3").html("");
+        $("#answer-choice-4").html("");
+
+        // Call the function to reset the timer
+        resetTimer();
+    }
+}
+
+// Execute the RUN function.
+run();
+
+
+// Create a function to reset the timer
+function resetTimer(){
+    number = 3;
+
+    // Call the RUN, CHANGEQUESTION and CHANGEANSWER functions on delay
+    setTimeout(run, 1000 * 3);
+    setTimeout(changeQuestion, 1000 * 3);
+    setTimeout(changeAnswers, 1000 * 3);
+}
+
+
+
+// Create a function to change the question after time runs out.
+function changeQuestion(){
+
+    // Incrument QUESTIONINDEX to display the next question.
+    questionIndex ++;
+    $("#question").html("<h3>" + questions[questionIndex] + "</h3>");
+    
+}
+
+// Create varialbes to keep track of the indecies of the ANSWERS.
+var answerIndex_1 = 0;
+var answerIndex_2 = 1;
+var answerIndex_3 = 2;
+var answerIndex_4 = 3;
+
+// Create a function to change the answer choices when the timer resets.
+function changeAnswers(){
+
+    // Increment ANSWERINDEX by 4 to display next set of answer choices.
+    answerIndex_1 += 4;
+    answerIndex_2 += 4;
+    answerIndex_3 += 4;
+    answerIndex_4 += 4;
+
+    $("#answer-choice-1").html(answers[answerIndex_1]);
+    $("#answer-choice-2").html(answers[answerIndex_2]);
+    $("#answer-choice-3").html(answers[answerIndex_3]);
+    $("#answer-choice-4").html(answers[answerIndex_4]);
+
+}
+
+// Create a function to check if the correct or incorrect answer is selected based on which question is displayed.
+function checkCorrectAnswer(){
+    if (questionIndex === 0){
+        console.log("We're on question 1");
+    }
+    if (questionIndex === 1){
+        console.log("We're on question 2");
+    }
+    if (questionIndex === 2){
+        console.log("We're on question 3");
+    }
+    if (questionIndex === 3){
+        console.log("We're on question 4");
+    }
+    if (questionIndex === 4){
+        console.log("We're on question 5");
+    }
+    if (questionIndex === 5){
+        console.log("We're on question 6");
+    }
+}
+    
 
 
 
